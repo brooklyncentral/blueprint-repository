@@ -3,12 +3,14 @@ package org.brooklyncentral.catalog.validation.testing;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
+
 import io.cloudsoft.catalog.util.CatalogValidator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,7 +37,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 
@@ -43,9 +44,9 @@ public class PullRequestValidationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(PullRequestValidationTest.class);
 
-    private static final String DIRECTORY_REPO_URI_ENV_VAR = "DIRECTORY_REPO_URI";
-    private static final String PR_NUMBER_ENV_VAR = "PR_NUMBER";
-    private static final String AUTH_TOKEN_ENV_VAR = "AUTH_TOKEN";
+    private static final String DIRECTORY_REPO_URI_PROP_KEY = "directoryRepoURI";
+    private static final String PR_NUMBER_PROP_KEY = "prNumber";
+    private static final String AUTH_TOKEN_PROP_KEY = "authToken";
 
     private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/brooklyn-community-catalog";
     private static final String FILE_TO_DIFF = "directory.yaml";
@@ -60,9 +61,9 @@ public class PullRequestValidationTest {
 
     @BeforeClass
     public void setUp() throws Exception {
-        String repoUrl = Optional.fromNullable(System.getenv(DIRECTORY_REPO_URI_ENV_VAR)).or(DEFAULT_REPOSITORIES_URI);
-        String prNumber = System.getenv(PR_NUMBER_ENV_VAR);
-        String authToken = System.getenv(AUTH_TOKEN_ENV_VAR);
+        final String repoUrl = System.getProperty(DIRECTORY_REPO_URI_PROP_KEY, DEFAULT_REPOSITORIES_URI);
+        final String prNumber = System.getProperty(PR_NUMBER_PROP_KEY);
+        final String authToken = System.getenv(AUTH_TOKEN_PROP_KEY);
 
         checkNotNull(prNumber, "PR number environment variable 'PR_NUMBER' must be set.");
 
@@ -113,22 +114,19 @@ public class PullRequestValidationTest {
     }
 
     private List<String> getURLsToValidate() throws Exception {
-        String diff = getDiff();
-        List<String> diffLines = IOUtils.readLines(new StringReader(diff));
+        final List<String> diffLines = Arrays.asList(getDiff());
+        final List<String> urlsToValidate = new LinkedList<>();
 
-        List<String> urlsToValidate = new LinkedList<>();
-
-        for (String diffLine : diffLines) {
+        for (final String diffLine : diffLines) {
             if (diffLine.startsWith("+-")) {
                 String urlToValidate = diffLine.replace("+-", "").trim();
                 urlsToValidate.add(urlToValidate);
             }
         }
-
         return urlsToValidate;
     }
 
-    private String getDiff() throws Exception {
+    private String[] getDiff() throws Exception {
         AbstractTreeIterator oldTreeIterator = generateTreeIterator(git.getRepository(), masterHash);
         AbstractTreeIterator newTreeIterator = generateTreeIterator(git.getRepository(), prHash);
 
@@ -138,17 +136,22 @@ public class PullRequestValidationTest {
                 .setPathFilter(PathFilter.create(FILE_TO_DIFF))
                 .call();
 
-        assertTrue(diff.size() == 1, "Exactly one diff must match for file: '" + FILE_TO_DIFF + "'.");
-        DiffEntry entry = diff.get(0);
+        if (diff.size() == 1) {
+            DiffEntry entry = diff.get(0);
 
-        OutputStream diffOutputStream = new ByteArrayOutputStream();
+            OutputStream diffOutputStream = new ByteArrayOutputStream();
 
-        try (DiffFormatter formatter = new DiffFormatter(diffOutputStream)) {
-            formatter.setRepository(git.getRepository());
-            formatter.format(entry);
+            try (DiffFormatter formatter = new DiffFormatter(diffOutputStream)) {
+                formatter.setRepository(git.getRepository());
+                formatter.format(entry);
+            }
+            return diffOutputStream.toString().split("\\r?\\n");
+        } else {
+            LOG.warn("File [{}] was unchanged", FILE_TO_DIFF);
+            return new String[]{};
         }
 
-        return diffOutputStream.toString();
+
     }
 
     private static AbstractTreeIterator generateTreeIterator(Repository repository, String objectId) throws Exception {
