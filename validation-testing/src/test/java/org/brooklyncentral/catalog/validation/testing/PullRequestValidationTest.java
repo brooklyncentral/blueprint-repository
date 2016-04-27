@@ -44,7 +44,7 @@ public class PullRequestValidationTest {
     private static final Logger LOG = LoggerFactory.getLogger(PullRequestValidationTest.class);
 
     private static final String DIRECTORY_REPO_URI_ENV_VAR = "DIRECTORY_REPO_URI";
-    private static final String PR_NUMBER_ENV_VAR = "PR_NUMBER";
+    private static final String PR_NUMBER_ENV_VAR = "ghprbPullId";
     private static final String AUTH_TOKEN_ENV_VAR = "AUTH_TOKEN";
 
     private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/brooklyn-community-catalog";
