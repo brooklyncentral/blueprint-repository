@@ -48,7 +48,7 @@ public class PullRequestValidationTest {
     private static final String PR_NUMBER_PROP_KEY = "prNumber";
     private static final String AUTH_TOKEN_PROP_KEY = "authToken";
 
-    private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/brooklyn-community-catalog";
+    private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/community-blueprint-repository";
     private static final String FILE_TO_DIFF = "directory.yaml";
     private static final String BRANCH_TO_TEST = "master";
 
