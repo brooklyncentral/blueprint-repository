@@ -65,7 +65,7 @@ public class PullRequestValidationTest {
         final String prNumber = System.getProperty(PR_NUMBER_PROP_KEY);
         final String authToken = System.getenv(AUTH_TOKEN_PROP_KEY);
 
-        checkNotNull(prNumber, "PR number environment variable 'PR_NUMBER' must be set.");
+        checkNotNull(prNumber, "PR number environment variable '" + PR_NUMBER_PROP_KEY + "' must be set.");
 
         cloneDirectory = Files.createTempDir();
 
