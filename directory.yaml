@@ -59,6 +59,6 @@
 - https://github.com/brooklyncentral/brooklyn-vanilla-windows-process
 - https://github.com/brooklyncentral/brooklyn-zookeeper-node
 - https://github.com/brooklyncentral/brooklyn-zookeeper-ensemble
-- https://github.com/brooklyncentral/clocker2
 - https://github.com/cloudsoft/brooklyn-hyperledger
 - https://github.com/cloudsoft/brooklyn-terraform
+- {repository: https://github.com/brooklyncentral/clocker, file: swarm/catalog/swarm/swarm.bom}
