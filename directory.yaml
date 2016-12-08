@@ -54,7 +54,8 @@
 - {repository: "https://github.com/brooklyncentral/brooklyn-storm-deployment", file: "catalog.bom"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-storm-node", file: "catalog.bom"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-7-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-8-server", file: "catalog.bom"}- {repository: https://github.com/brooklyncentral/brooklyn-vanilla-software-process", file: "catalog.bom"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-8-server", file: "catalog.bom"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-software-process", file: "catalog.bom"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-windows-process", file: "catalog.bom"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-node", file: "catalog.bom"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-ensemble", file: "catalog.bom"}
