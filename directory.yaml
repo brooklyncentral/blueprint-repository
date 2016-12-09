@@ -62,3 +62,4 @@
 - {repository: "https://github.com/cloudsoft/brooklyn-hyperledger", file: "catalog.bom"}
 - {repository: "https://github.com/cloudsoft/brooklyn-terraform", file: "catalog.bom"}
 - {repository: "https://github.com/brooklyncentral/clocker", file: "swarm/catalog/swarm/swarm.bom"}
+- {repository: "https://github.com/brooklyncentral/clocker", file: "kubernetes/catalog/kubernetes/kubernetes.bom"}
