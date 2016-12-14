@@ -1,66 +1,66 @@
-- {repository: "https://github.com/rdowner/brooklyn-temperature-device", file: "catalog.bom"}
-- {repository: "https://github.com/andreaturli/brooklyn-logstash", file: "catalog.bom"}
-- {repository: "https://github.com/andreaturli/brooklyn-kibana", file: "catalog.bom"}
-- {repository: "https://github.com/tbouron/brooklyn-gitlab", file: "catalog.bom"}
-- {repository: "https://github.com/cloudsoft/jmeter-entity", file: "catalog.bom"}
-- {repository: "https://github.com/Graeme-Miller/brooklyn-elasticsearch", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-spark", file: "catalog.bom"}
-- {repository: "https://github.com/johnmccabe/brooklyn-minecraft", file: "catalog.bom"}
-- {repository: "https://github.com/cloudsoft/consul", file: "catalog.bom"}
-- {repository: "https://github.com/geomacy/salt-ent-test", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-activemq-broker", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-ansibleentity", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-apache-cassandra-database-fabric", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-apache-cassandra-datacenter-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-apache-cassandra-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-apache-solr-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-bind", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-entity-mirror", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-controlled-dynamic-web-app-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-couchbase-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-couchbase-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-couchdb-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-dynamic-web-app-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-elastic-search-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-elastic-search-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-hazelcast-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-hazelcast-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-jboss-application-server-6", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-jboss-application-server-7", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-jetty6-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-kafka", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-karaf", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-machine-entity", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-mariadb-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-mongodb-router", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-mongodb-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-mongodb-sharded-deployment", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-monit-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-mysql-master-slave-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-mysql-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-nginx-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-nodejs-application", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-postgresql-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-qpid-broker", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-rabbitmq-broker", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-redis-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-redis-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-riak-cluster", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-riak-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-rubyrep-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-saltentity", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-server-pool", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-storm-deployment", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-storm-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-7-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-8-server", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-software-process", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-windows-process", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-node", file: "catalog.bom"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-ensemble", file: "catalog.bom"}
-- {repository: "https://github.com/cloudsoft/brooklyn-hyperledger", file: "catalog.bom"}
-- {repository: "https://github.com/cloudsoft/brooklyn-terraform", file: "catalog.bom"}
+- {repository: "https://github.com/rdowner/brooklyn-temperature-device"}
+- {repository: "https://github.com/andreaturli/brooklyn-logstash"}
+- {repository: "https://github.com/andreaturli/brooklyn-kibana"}
+- {repository: "https://github.com/tbouron/brooklyn-gitlab"}
+- {repository: "https://github.com/cloudsoft/jmeter-entity"}
+- {repository: "https://github.com/Graeme-Miller/brooklyn-elasticsearch"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-spark"}
+- {repository: "https://github.com/johnmccabe/brooklyn-minecraft"}
+- {repository: "https://github.com/cloudsoft/consul"}
+- {repository: "https://github.com/geomacy/salt-ent-test"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-activemq-broker"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-ansibleentity"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-apache-cassandra-database-fabric"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-apache-cassandra-datacenter-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-apache-cassandra-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-apache-solr-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-bind"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-entity-mirror"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-controlled-dynamic-web-app-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-couchbase-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-couchbase-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-couchdb-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-dynamic-web-app-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-elastic-search-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-elastic-search-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-hazelcast-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-hazelcast-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-jboss-application-server-6"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-jboss-application-server-7"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-jetty6-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-kafka"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-karaf"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-machine-entity"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-mariadb-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-mongodb-router"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-mongodb-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-mongodb-sharded-deployment"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-monit-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-mysql-master-slave-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-mysql-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-nginx-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-nodejs-application"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-postgresql-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-qpid-broker"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-rabbitmq-broker"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-redis-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-redis-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-riak-cluster"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-riak-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-rubyrep-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-saltentity"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-server-pool"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-storm-deployment"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-storm-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-7-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-8-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-software-process"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-windows-process"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-ensemble"}
+- {repository: "https://github.com/cloudsoft/brooklyn-hyperledger"}
+- {repository: "https://github.com/cloudsoft/brooklyn-terraform"}
 - {repository: "https://github.com/brooklyncentral/clocker", file: "swarm/catalog/swarm/swarm.bom", parentId: "docker-swarm"}
 - {repository: "https://github.com/brooklyncentral/clocker", file: "kubernetes/catalog/kubernetes/kubernetes.bom", parentId: "kubernetes-cluster-application"}
 
