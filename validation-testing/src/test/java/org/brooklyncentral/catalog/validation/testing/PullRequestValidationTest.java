@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,9 @@ import com.google.common.io.Files;
 
 import org.apache.brooklyn.util.yaml.Yamls;
 
-import io.cloudsoft.catalog.util.CatalogValidator;
+import io.cloudsoft.catalog.scraper.DirectoryEntry;
+import io.cloudsoft.catalog.scraper.DirectoryScraper;
+import io.cloudsoft.catalog.scraper.validator.CatalogValidator;
 
 public class PullRequestValidationTest {
 
@@ -55,11 +58,6 @@ public class PullRequestValidationTest {
     private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/blueprint-repository";
     private static final String FILE_TO_DIFF = "directory.yaml";
     private static final String BRANCH_TO_TEST = "master";
-
-    private static final String YAML_KEY_REPOSITORY= "repository";
-    private static final String YAML_KEY_FILE= "file";
-    private static final String YAML_PARENT_ID= "parentId";
-    private static final String FILE_DEFAULT = "catalog.bom";
 
     private File cloneDirectory;
 
@@ -119,27 +117,24 @@ public class PullRequestValidationTest {
                 directory.delete();
 
                 Map<String, String> catalogItemRepoMap = (Map<String, String>) Yamls.parseAll(entryToValidate).iterator().next();
-
-                String catalogRepository = catalogItemRepoMap.get(YAML_KEY_REPOSITORY);
-                Optional<String> catalogFile = Optional.fromNullable(catalogItemRepoMap.get(YAML_KEY_FILE));
-                Optional<String> parentId = Optional.fromNullable(catalogItemRepoMap.get(YAML_PARENT_ID));
+                List<DirectoryEntry> directoryEntries = DirectoryScraper.rawDataConverter(Collections.singletonList(catalogItemRepoMap));
+                DirectoryEntry directoryEntry = directoryEntries.iterator().next();
 
                 try {
                     this.git = Git.cloneRepository()
                             .setDirectory(directory)
-                            .setURI(catalogRepository)
+                            .setURI(directoryEntry.getRepositroyUrl())
                             .setBranchesToClone(singleton("refs/heads/" + BRANCH_TO_TEST))
                             .setBranch("refs/heads/" + BRANCH_TO_TEST)
                             .call();
                 } catch (GitAPIException e) {
-                    throw new IllegalArgumentException(String.format("Cannot clone %s at branch %s", catalogRepository, BRANCH_TO_TEST), e);
+                    throw new IllegalArgumentException(String.format("Cannot clone %s at branch %s", directoryEntry.getRepositroyUrl(), BRANCH_TO_TEST), e);
                 }
 
-                String file = catalogFile.or(FILE_DEFAULT);
-                if(parentId.isPresent()){
-                    CatalogValidator.validateWithId(directory, file, parentId.get());
+                if(directoryEntry.getParentId().isPresent()){
+                    CatalogValidator.validateWithId(directory, directoryEntry.getFile(), directoryEntry.getParentId().get());
                 } else {
-                    CatalogValidator.validate(directory, file);
+                    CatalogValidator.validate(directory, directoryEntry.getFile());
                 }
 
 
