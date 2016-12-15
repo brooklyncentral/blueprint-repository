@@ -2,6 +2,7 @@ package org.brooklyncentral.catalog.validation.testing;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static java.util.Collections.singleton;
+import static org.testng.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -143,8 +144,7 @@ public class PullRequestValidationTest {
 
 
             } catch (Exception e) {
-               // fail("Validation failed for entry: '" + entryToValidate + "'", e);
-                LOG.info("Validation failed for entry: '" + entryToValidate + "'", e);
+                fail("Validation failed for entry: '" + entryToValidate + "'", e);
             }
 
             LOG.info("Successfully validated entry: '" + entryToValidate + "'");
