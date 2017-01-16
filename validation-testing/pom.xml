@@ -24,7 +24,7 @@
         <guava.version>19.0</guava.version>
         <commons-io.version>2.4</commons-io.version>
         <slf4j-simple.version>1.7.21</slf4j-simple.version>
-        <util-validator.version>1.0.4</util-validator.version>
+        <catalog-scraper.version>1.0.7-SNAPSHOT</catalog-scraper.version>
     </properties>
 
     <dependencies>
@@ -59,8 +59,8 @@
         </dependency>
         <dependency>
             <groupId>io.cloudsoft.blueprints</groupId>
-            <artifactId>util-validator</artifactId>
-            <version>${util-validator.version}</version>
+            <artifactId>catalog-scraper</artifactId>
+            <version>${catalog-scraper.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

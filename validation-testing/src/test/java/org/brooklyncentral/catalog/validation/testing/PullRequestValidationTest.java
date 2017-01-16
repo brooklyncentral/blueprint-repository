@@ -1,23 +1,23 @@
 package org.brooklyncentral.catalog.validation.testing;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.testng.Assert.assertTrue;
+import static java.util.Collections.singleton;
 import static org.testng.Assert.fail;
-
-import io.cloudsoft.catalog.util.CatalogValidator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
-import java.io.StringReader;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.diff.DiffEntry;
 import org.eclipse.jgit.diff.DiffFormatter;
 import org.eclipse.jgit.lib.ObjectId;
@@ -37,8 +37,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
+
+import org.apache.brooklyn.util.yaml.Yamls;
+
+import io.cloudsoft.catalog.scraper.DirectoryEntry;
+import io.cloudsoft.catalog.scraper.DirectoryScraper;
+import io.cloudsoft.catalog.scraper.validator.CatalogValidator;
 
 public class PullRequestValidationTest {
 
@@ -48,7 +55,7 @@ public class PullRequestValidationTest {
     private static final String PR_NUMBER_PROP_KEY = "prNumber";
     private static final String AUTH_TOKEN_PROP_KEY = "authToken";
 
-    private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/community-blueprint-repository";
+    private static final String DEFAULT_REPOSITORIES_URI = "https://github.com/brooklyncentral/blueprint-repository";
     private static final String FILE_TO_DIFF = "directory.yaml";
     private static final String BRANCH_TO_TEST = "master";
 
@@ -93,37 +100,65 @@ public class PullRequestValidationTest {
 
     @Test
     public void validateNewRepos() throws Exception {
-        List<String> urlsToValidate = getURLsToValidate();
+        List<String> entriesToValidate = getEntriesToValidate();
 
-        LOG.info("There are " + urlsToValidate.size() + " URL(s) to validate.");
+        LOG.info("There are " + entriesToValidate.size() + " entries to validate.");
 
-        for (String urlToValidate : urlsToValidate) {
-            LOG.info("Validating URL: '" + urlToValidate + "'");
+        for (String entryToValidate : entriesToValidate) {
+            LOG.info("Validating entry: '" + entryToValidate + "'");
 
             try {
-                CatalogValidator catalogValidator = new CatalogValidator(urlToValidate, BRANCH_TO_TEST);
-                catalogValidator.validate();
+                File directory = null;
+                try {
+                    directory = File.createTempFile("catalog", "validator");
+                } catch (IOException e) {
+                    throw new IllegalStateException(String.format("Cannot create local directory to clone %s at branch %s", entryToValidate, BRANCH_TO_TEST), e);
+                }
+                directory.delete();
+
+                Map<String, String> catalogItemRepoMap = (Map<String, String>) Yamls.parseAll(entryToValidate).iterator().next();
+                List<DirectoryEntry> directoryEntries = DirectoryScraper.rawDataConverter(Collections.singletonList(catalogItemRepoMap));
+                DirectoryEntry directoryEntry = directoryEntries.iterator().next();
+
+                try {
+                    this.git = Git.cloneRepository()
+                            .setDirectory(directory)
+                            .setURI(directoryEntry.getRepositroyUrl())
+                            .setBranchesToClone(singleton("refs/heads/" + BRANCH_TO_TEST))
+                            .setBranch("refs/heads/" + BRANCH_TO_TEST)
+                            .call();
+                } catch (GitAPIException e) {
+                    throw new IllegalArgumentException(String.format("Cannot clone %s at branch %s", directoryEntry.getRepositroyUrl(), BRANCH_TO_TEST), e);
+                }
+
+                if(directoryEntry.getParentId().isPresent()){
+                    CatalogValidator.validateWithId(directory, directoryEntry.getFile(), directoryEntry.getParentId().get());
+                } else {
+                    CatalogValidator.validate(directory, directoryEntry.getFile());
+                }
+
+
             } catch (Exception e) {
-                fail("Validation failed for URL: '" + urlToValidate + "'", e);
+                fail("Validation failed for entry: '" + entryToValidate + "'", e);
             }
 
-            LOG.info("Successfully validated URL: '" + urlToValidate + "'");
+            LOG.info("Successfully validated entry: '" + entryToValidate + "'");
         }
 
-        LOG.info("All URL(s) successfully validated.");
+        LOG.info("All entries successfully validated.");
     }
 
-    private List<String> getURLsToValidate() throws Exception {
+    private List<String> getEntriesToValidate() throws Exception {
         final List<String> diffLines = Arrays.asList(getDiff());
-        final List<String> urlsToValidate = new LinkedList<>();
+        final List<String> entriesToValidate = new LinkedList<>();
 
         for (final String diffLine : diffLines) {
             if (diffLine.startsWith("+-")) {
-                String urlToValidate = diffLine.replace("+-", "").trim();
-                urlsToValidate.add(urlToValidate);
+                String entryToValidate = diffLine.replace("+-", "").trim();
+                entriesToValidate.add(entryToValidate);
             }
         }
-        return urlsToValidate;
+        return entriesToValidate;
     }
 
     private String[] getDiff() throws Exception {
