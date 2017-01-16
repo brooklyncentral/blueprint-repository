@@ -5,19 +5,23 @@ Have Brooklyn entities or other catalog items you want to share? Fork this
 repository, edit [directory.yaml](directory.yaml) to add a link to your
 repository, and submit a pull request! 
 
-## Spec for Catalogued Projects - Version 2
+## Format for [directory.yaml](directory.yaml)
+You can add a repository to this list by adding another entry in the following format:
 
-The root of your repository should contain **at least** this file:
+```- {repository: "https://github.com/example/example", file: "path/to/file", parentId: "my-catalog-id"}```
 
-| Filename     | Optionality                     | Notes                                                         |
-|--------------|---------------------------------|---------------------------------------------------------------|
-| catalog.bom  | **Required**                    | See below                                                     |
+* repository: The URL for the repository you'd like to add 
+* file (optional): A file in that repository you'd like to get the catalog item from. If left blank will default to /catalog.bom
+* parentId (optional): The id of the catalog item to add. We will search through the given file for an entry with that ID. If left blank will use the root item.
 
-### catalog.bom
+
+## Format for catalog entries
 
 This should be a well-formed and valid Apache Brooklyn catalog file, as described in the Brooklyn [catalog documentation](http://brooklyn.incubator.apache.org/v/latest/ops/catalog/index.html). However, this syntax is extended to include metadata information necessary to the community catalog.
 
 All keys described below **have to be defined within the `brooklyn.catalog` -> `publish` key**.
+
+Please note, if you are using the parentId config above, the item with the supplied ID will have to have it's keys defined in a publish section on the item itself. I.E. it will not inherit this from a parent.
 
 The catalog metadata part will contain these keys:
 
