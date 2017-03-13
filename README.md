@@ -10,8 +10,9 @@ You can add a repository to this list by adding another entry in the following f
 
 ```- {repository: "https://github.com/example/example", file: "path/to/file", parentId: "my-catalog-id"}```
 
-* repository: The URL for the repository you'd like to add 
-* file (optional): A file in that repository you'd like to get the catalog item from. If left blank will default to /catalog.bom
+* repository: The URL for the repository you'd like to add.
+* file (optional): A file in that repository you'd like to get the catalog item from. If left blank will default to `/catalog.bom`.
+* branch (optional): The branch of the repository you'd like to use. If left blank will default to `master`.
 * parentId (optional): The id of the catalog item to add. We will search through the given file for an entry with that ID. If left blank will use the root item.
 
 
