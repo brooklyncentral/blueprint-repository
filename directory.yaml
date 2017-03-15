@@ -67,3 +67,4 @@
 - {repository: "https://github.com/duncangrant/brooklyn-ambari-catalog"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-squid" }
 - {repository: "https://github.com/brooklyncentral/brooklyn-rethinkdb", file: "catalog/rethinkdb/rethinkdb.bom", parentId: "rethinkdb-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-nexus", branch: "2.X", file: "catalog/nexus/nexus.bom", parentId: "nexus-2"}
