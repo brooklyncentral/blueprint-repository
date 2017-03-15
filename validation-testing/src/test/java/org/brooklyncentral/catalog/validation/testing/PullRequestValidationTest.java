@@ -123,12 +123,12 @@ public class PullRequestValidationTest {
                 try {
                     this.git = Git.cloneRepository()
                             .setDirectory(directory)
-                            .setURI(directoryEntry.getRepositroyUrl())
-                            .setBranchesToClone(singleton("refs/heads/" + BRANCH_TO_TEST))
-                            .setBranch("refs/heads/" + BRANCH_TO_TEST)
+                            .setURI(directoryEntry.getRepositoryUrl())
+                            .setBranchesToClone(singleton("refs/heads/" + directoryEntry.getBranch()))
+                            .setBranch("refs/heads/" + directoryEntry.getBranch())
                             .call();
                 } catch (GitAPIException e) {
-                    throw new IllegalArgumentException(String.format("Cannot clone %s at branch %s", directoryEntry.getRepositroyUrl(), BRANCH_TO_TEST), e);
+                    throw new IllegalArgumentException(String.format("Cannot clone %s at branch %s", directoryEntry.getRepositoryUrl(), directoryEntry.getBranch()), e);
                 }
 
                 if(directoryEntry.getParentId().isPresent()){
