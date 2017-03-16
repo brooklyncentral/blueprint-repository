@@ -66,6 +66,7 @@
 - {repository: "https://github.com/brooklyncentral/clocker", file: "kubernetes/catalog/kubernetes/kubernetes.bom", parentId: "kubernetes-cluster-application"}
 - {repository: "https://github.com/duncangrant/brooklyn-ambari-catalog"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-squid" }
+- {repository: "https://github.com/brooklyncentral/brooklyn-ceph", file: "catalog/ceph/ceph.bom", parentId: "ceph-template" }
 - {repository: "https://github.com/brooklyncentral/brooklyn-rethinkdb", file: "catalog/rethinkdb/rethinkdb.bom", parentId: "rethinkdb-node"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-nexus", branch: "2.X", file: "catalog/nexus/nexus.bom", parentId: "nexus-2"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-nexus", branch: "master", file: "catalog/nexus/nexus.bom", parentId: "nexus-3"}
