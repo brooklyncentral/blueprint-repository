@@ -71,3 +71,4 @@
 - {repository: "https://github.com/brooklyncentral/brooklyn-nexus", branch: "2.X", file: "catalog/nexus/nexus.bom", parentId: "nexus-2"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-nexus", branch: "master", file: "catalog/nexus/nexus.bom", parentId: "nexus-3"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-jenkins", file: "catalog/jenkins/jenkins.bom", parentId: "jenkins"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-alfresco", file: "catalog/alfresco/alfresco.bom"}
