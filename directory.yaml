@@ -41,7 +41,8 @@
 - {repository: "https://github.com/brooklyncentral/brooklyn-mysql-node"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-nginx-server"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-nodejs-application"}
-- {repository: "https://github.com/brooklyncentral/brooklyn-postgresql-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-postgresql", file: "catalog/postgresql.bom", parentId: "postgresql-node"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-postgresql", file: "catalog/postgresql.bom", parentId: "postgresql-ha"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-qpid-broker"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-rabbitmq-broker"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-redis-cluster"}
