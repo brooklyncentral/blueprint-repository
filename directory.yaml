@@ -56,6 +56,7 @@
 - {repository: "https://github.com/brooklyncentral/brooklyn-storm-node"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-7-server"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-tomcat-8-server"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-three-tier-webapp"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-software-process"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-vanilla-windows-process"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-zookeeper-node"}
