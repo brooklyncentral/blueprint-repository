@@ -2,7 +2,7 @@
 - {repository: "https://github.com/andreaturli/brooklyn-logstash", parentId: "logstash-standalone"}
 - {repository: "https://github.com/andreaturli/brooklyn-kibana"}
 - {repository: "https://github.com/tbouron/brooklyn-gitlab"}
-- {repository: "https://github.com/cloudsoft/jmeter-entity"}
+- {repository: "https://github.com/brooklyncentral/brooklyn-jmeter", file: "catalog/catalog.bom"}
 - {repository: "https://github.com/Graeme-Miller/brooklyn-elasticsearch", parentId: "elasticsearch"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-spark", parentId: "spark-cluster-template"}
 - {repository: "https://github.com/johnmccabe/brooklyn-minecraft"}
