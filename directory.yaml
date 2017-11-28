@@ -76,4 +76,4 @@
 - {repository: "https://github.com/brooklyncentral/brooklyn-jenkins", file: "catalog/jenkins/jenkins.bom", parentId: "jenkins"}
 - {repository: "https://github.com/brooklyncentral/brooklyn-alfresco", file: "catalog/alfresco/alfresco.bom", parentId: "alfresco"} 
 - {repository: "https://github.com/Montlake/blueprint-illustrations", file: "three-tier-nodejs-amp/amp-catalog.bom"}
-
+- {repository: "https://github.com/brooklyncentral/brooklyn-drbd", file: "drbd.bom"}
